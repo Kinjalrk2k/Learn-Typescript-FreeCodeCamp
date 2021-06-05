@@ -120,3 +120,57 @@
   type MaybePopularTags = string | null;
   const popularTags = MaybePopularTags[] = ["dragon", "coffee"];
   ```
+
+## Few types in TypeScript
+
+### `void`
+
+- If we dont return anything from a function, we actually return `void`
+- `void` is a set of `null` and `undefined`
+
+### `any`
+
+> Worst type in TypeScript
+
+- Actually it makes variables same like JavaScript variables. Any type of values can be assigned
+- Turns off TypeScript checks all together
+- Avoid `any` at any costs :)
+
+### `never`
+
+- Functions with `never` can't be executed till the end
+  > Need to study more on this!
+
+### `unknown`
+
+- Was introduced in TypeScript 3
+- While initializing, `unknown` acts the same was as `any`
+- But `unknown` variables cannot be assigned to anything, as TypeScript doesn't know what type `unknown` is
+
+### assertion
+
+- Used when converting one type to another
+- When using `unknown` we have to use assertion to work with the variable
+- `as` operator makes type assertion
+- It's like casting
+- ```ts
+  let pageNumber = "1";
+  let numericPageNumber = pageNumber as unknown as number;
+  // first converting to unknown as: string and number types don't overlap
+  ```
+
+## Working with DOM
+
+- TypeScript doesn't know anything about our markup
+- `Element` is the highest class in hierarhy
+- Generic Classes are written and then narrowed down with type assertion
+- Type assertion should be done while using the DOM, because the generic classes might not have all the properties and will throw errors
+- ```ts
+  // .foo is a input element
+  const someElement = document.querySelector(".foo") as HTMLInputElement;
+  console.log(someElement.value);
+  someElement.addEventListener("blur", (event) => {
+    const target = event.target as HTMLInputElement;
+    console.log(target.value);
+  });
+  ```

@@ -1,14 +1,8 @@
-type ID = string
+// .foo is a input element
+const someElement = document.querySelector(".foo") as HTMLInputElement
+console.log(someElement.value)
 
-interface UserInterface {
-  name: string,
-  surname: string
-}
-
-let username: string = "alex"
-
-let pageName: string | number = "12"
-
-let errorMessage: string | null = null
-
-let user: UserInterface | null = null
+someElement.addEventListener("blur", (event) => {
+  const target = event.target as HTMLInputElement
+  console.log(target.value)
+})

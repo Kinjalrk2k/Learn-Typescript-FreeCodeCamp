@@ -1,4 +1,7 @@
-var username = "alex";
-var pageName = "12";
-var errorMessage = null;
-var user = null;
+// .foo is a input element
+var someElement = document.querySelector(".foo");
+console.log(someElement.value);
+someElement.addEventListener("blur", function (event) {
+    var target = event.target;
+    console.log(target.value);
+});
