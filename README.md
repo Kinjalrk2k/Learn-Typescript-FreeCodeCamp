@@ -174,3 +174,91 @@
     console.log(target.value);
   });
   ```
+
+## Classes
+
+- TypeScripts support classes just like JavaScript from ES6
+- Classes are sugar coated prototypes
+- Everything is same as JavaScript classes
+- Properties of a class can be accessed using `this` keyword
+- We get direct access to everything within the class. Everything is public! By default, everything is public
+- Access Level
+  - `public`: Accessable everywhere
+  - `private`: Accessable only within the class
+  - `protected`: Accessable within the class and it's children (when using inheritence)
+    > All these access levels only recides in Typescript. That means, when we transpile to JavaScipt, all these protection means nothing. No checks! Just prototypes! :(
+- `readonly`: Cannot be re-assigned, once assigned. Sounds like constansts
+- ```ts
+  class User {
+    private firstname: string;
+    private lastname: string;
+    readonly unchangableName: string;
+
+    constructor(firstname: string, lastname: string) {
+      this.firstname = firstname;
+      this.lastname = lastname;
+      this.unchangableName = firstname;
+    }
+
+    getFullName(): string {
+      return this.firstname + " " + this.lastname;
+    }
+  }
+
+  const user1 = new User("Kinjal", "Raykarmakar");
+  console.log(user1.getFullName());
+  ```
+
+### Implementing Interfaces
+
+- We must create Interfaces and then Classes should implement them (generic Java knowledge)
+- Interface will have the function header with no body
+- We can create a common interface and different classes can use it's sharable code
+- ```ts
+  interface UserInterface {
+    getFullName(): string;
+  }
+
+  class User implements UserInterface {
+    private firstname: string;
+    private lastname: string;
+    readonly unchangableName: string;
+
+    constructor(firstname: string, lastname: string) {
+      this.firstname = firstname;
+      this.lastname = lastname;
+      this.unchangableName = firstname;
+    }
+
+    getFullName(): string {
+      return this.firstname + " " + this.lastname;
+    }
+  }
+
+  const user1 = new User("Kinjal", "Raykarmakar");
+  console.log(user1.getFullName());
+  ```
+
+### Static properties
+
+- Static properties can be created on classes and not on instances
+- We get static properties on the class itself and not on the object
+
+### Inheritence
+
+- A class can `extends` a parent class
+- The child class automatically has access to all the parent class properties
+- We can override properties and methods in the child class
+- ```ts
+  class Admin extends User {
+    private editor: string;
+
+    setEditor(editor: string): void {
+      this.editor = editor;
+    }
+
+    getEditor(): string {
+      return this.editor;
+    }
+  }
+  ```
