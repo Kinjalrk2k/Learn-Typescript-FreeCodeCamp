@@ -24,3 +24,25 @@
 - The `tsconfig.json` file:
   - Uses several configurations to automate our project
   - We can specify to transpile all the code from the `./src` folder to `./dist` folder
+
+## TypeScript Definations
+
+Variables:
+
+- We define variables in TypeScript the same way we do in JavaScript
+- In TypeScript we can only change the value of a variable in within the same type. That means we can't assign a `boolean` value to a `string` variable
+- Types are automatically understood by TypeScript but it is recommended to explicitly specify the types
+- `let hello: string = "world"`
+
+Functions:
+
+- Arrow functions are supported
+- We can also use the `function` keyword
+- Types can be specified in the function parameters
+- Also, return type of the function should be mentioned
+
+- ```ts
+  const getFullName = (name: string, surname: string): string => {
+    return name + " " + surname;
+  };
+  ```
