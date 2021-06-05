@@ -27,14 +27,14 @@
 
 ## TypeScript Definations
 
-Variables:
+### Variables:
 
 - We define variables in TypeScript the same way we do in JavaScript
 - In TypeScript we can only change the value of a variable in within the same type. That means we can't assign a `boolean` value to a `string` variable
 - Types are automatically understood by TypeScript but it is recommended to explicitly specify the types
 - `let hello: string = "world"`
 
-Functions:
+### Functions:
 
 - Arrow functions are supported
 - We can also use the `function` keyword
@@ -46,3 +46,53 @@ Functions:
     return name + " " + surname;
   };
   ```
+
+## Interfaces
+
+- Objects in JavaScript has no strict properties
+- We can define types on-the-fly
+- ```ts
+  const user: { name: string; age: number } = {
+    name: "Kinjal",
+    age: 21,
+  };
+  ```
+- Interfaces helps us create objects with some properties
+- It is the code style to use interface name as TitleCase
+- ```ts
+  interface User {
+    name: string;
+    age: number;
+  }
+
+  const user: User = {
+    name: "Kinjal",
+    age: 21,
+  };
+  ```
+
+- By default all properties inside interfaces are mandatory, but we can skip a property by putting `?`
+- ```ts
+  interface User {
+    name: string;
+    age?: number;
+  }
+  ```
+- Interfaces gives us the best autocomplete support
+- There can be functions in an Interface
+- ```ts
+  interface User {
+    name: string;
+    age?: number;
+    getMessage(): string;
+  }
+  const user: User = {
+    name: "Kinjal",
+    age: 21,
+    getMessage() {
+      return "Hello" + name;
+    },
+  };
+  ```
+- Functions in interfeaces are actually defined in the object
+- Interfaces and classes can cause name collisions. So, it is recommended to postfix the name with `Interface` like: `UserInterface` in place of `User`
