@@ -13,3 +13,14 @@
 - NodeJS
 - TypeScript: `npm install -g typescript`
 - Check the version of TypeScript `tsc -v`
+
+## Writing TypeScript
+
+- We can create a TypeScript file with a `.ts` file extension.
+- Transfile the TypeScript file using `tsc <filename>.ts`
+- This will generate a transpiled version as `<filename>.js`
+  > Note: `tsc` transpiles TypeScript code to ES3, which is though a old version, but safe to run in the browser
+- Watch mode: Detects file changes and triggers transpile
+- The `tsconfig.json` file:
+  - Uses several configurations to automate our project
+  - We can specify to transpile all the code from the `./src` folder to `./dist` folder
