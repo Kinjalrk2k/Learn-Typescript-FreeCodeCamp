@@ -1,13 +1,14 @@
-interface User {
-  name: string
-  age?: number
-  getMessage(): string
+type ID = string
+
+interface UserInterface {
+  name: string,
+  surname: string
 }
 
-const user: User = {
-  name: "Kinjal",
-  age: 21,
-  getMessage() {
-    return "Hello" + name
-  }
-}
+let username: string = "alex"
+
+let pageName: string | number = "12"
+
+let errorMessage: string | null = null
+
+let user: UserInterface | null = null

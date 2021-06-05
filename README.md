@@ -96,3 +96,27 @@
   ```
 - Functions in interfeaces are actually defined in the object
 - Interfaces and classes can cause name collisions. So, it is recommended to postfix the name with `Interface` like: `UserInterface` in place of `User`
+
+## Union Operator
+
+- We know that a variable in TypeScript has a type and it cannot be changed.
+- If we need a variable which needs more than one type, we can use the union operator (`|`)
+- `let pageName: string | number = "12"`
+- Most popular use of Union is checking for `null` . That is initially, when we don't know the type we set the variable to `null` and later use it's actual type.
+- `let errorMessage: string | null = null; // initailly null, but latter we can set a string`
+- `let errorMessage: string | null // if we don't mention a default value, it is undefined`
+
+## Type Alias
+
+- Types can be alias using the `type` keyword
+- `type ID = string // we can use ID as our type in place of string in anywhere in our code now `
+- Makes code understandable
+- ```ts
+  type PopularTags = string;
+  const popularTags = Populartags[] = ["dragon", "coffee"];
+  ```
+- Unions and Type can be combined
+- ```ts
+  type MaybePopularTags = string | null;
+  const popularTags = MaybePopularTags[] = ["dragon", "coffee"];
+  ```

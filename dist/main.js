@@ -1,7 +1,4 @@
-var user = {
-    name: "Kinjal",
-    age: 21,
-    getMessage: function () {
-        return "Hello" + name;
-    }
-};
+var username = "alex";
+var pageName = "12";
+var errorMessage = null;
+var user = null;
