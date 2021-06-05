@@ -262,3 +262,64 @@
     }
   }
   ```
+
+## Generics
+
+- `<T>` is the default name for Generic
+- We need generic when we need to pass an object to a function. TypeScript by default sees the passed object as `any` if we don't provide any type explicitly. Ans using `any` is bad, hence we use Generic
+- The generic once defined withing the `<>` in the function can then be used in the function parameters and even inide the body on the function
+- ```ts
+  const addId = <T>(obj: T) => {
+    const id = Math.random().toString(16);
+
+    return {
+      ...obj,
+      id,
+    };
+  };
+  ```
+
+- The data type of the object is automatically passed in the Generic. So, Generic ins't `any` but the type we passed
+- It is recommeded to explicitly pass the datatype in the function call to the generic as it is easier to read the code
+- ```ts
+  const result = addId<UserInterface>(user);
+  ```
+- We can extend the Generic to make it more specific: `<T extends object>(obj: T)`
+- We can add Generics in Interfaces too!
+- ```ts
+  interface UserInterface<T> {
+    name: string;
+    data: T;
+  }
+
+  const user1: UserInterface<{ meta: string }> = {
+    name: "Jack",
+    data: {
+      meta: "foo",
+    },
+  };
+
+  const user2: UserInterface<string[]> = {
+    name: "Jack",
+    data: ["foo", "bar"],
+  };
+  ```
+
+- Passing several Datatypes
+- ```ts
+  interface UserInterface<T, V> {
+    name: string;
+    data: T;
+    otherdata: V;
+  }
+
+  const user1: UserInterface<{ meta: string }, string> = {
+    name: "Jack",
+    data: {
+      meta: "foo",
+    },
+    otherdata: "bar",
+  };
+  ```
+
+-

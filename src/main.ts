@@ -1,35 +1,30 @@
-interface UserInterface {
-  getFullName(): string
-}
+const addId = <T extends object>(obj: T) => {
+  const id = Math.random().toString(16)
 
-class User implements UserInterface {
-  private firstname: string 
-  private lastname: string
-  readonly unchangableName: string
-  static maxAge = 50
-
-  constructor(firstname: string, lastname: string) {
-    this.firstname = firstname
-    this.lastname = lastname
-    this.unchangableName = firstname
-  }
-
-  getFullName(): string {
-    return this.firstname + " " + this.lastname
+  return {
+    ...obj,
+    id
   }
 }
 
-class Admin extends User {
-  private editor: string
-
-  setEditor(editor: string): void {
-    this.editor = editor
-  }
-
-  getEditor(): string {
-    return this.editor
-  }
+interface UserInterface<T, V> {
+  name: string
+  data: T
+  otherdata: V
 }
 
-const user1 = new User("Kinjal", "Raykarmakar")
-console.log(user1.getFullName())
+const user1: UserInterface<{meta: string}, string> = {
+  name: "Jack",
+  data: {
+    meta: "foo"
+  },
+  otherdata: "bar"
+}
+
+const user2: UserInterface<string[]> = {
+  name: "Jack",
+  data: ["foo", "bar"]
+}
+
+const result = addId<UserInterface>(user)
+console.log(result)
