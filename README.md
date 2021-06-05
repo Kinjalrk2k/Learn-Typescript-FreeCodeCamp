@@ -322,4 +322,30 @@
   };
   ```
 
--
+## Enumerables
+
+- Collection of data
+- `enums` are by default 0 indexed
+- `enums` can be used as a datatype
+- ```ts
+  enum Status {
+    NotStarted,
+    InProgress,
+    Done,
+  }
+  ```
+- Values in an enum can be assigned using the `=` sign
+- ```ts
+  enum Status {
+    NotStarted = "notStarted",
+    InProgress = "inProgress",
+    Done = "done",
+  }
+  ```
+- It is common to use `enum` within interfaces
+- ```ts
+  interface Task {
+    id: string;
+    status: StatusEnum;
+  }
+  ```
